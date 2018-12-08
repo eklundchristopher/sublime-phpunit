@@ -44,6 +44,11 @@ class PhpunitTestCommand(sublime_plugin.WindowCommand):
         return cf
 
     def find_phpunit_config(self, file_name):
+        custom_config_path = self.get_setting('phpunit-sublime-xmlpath', None)
+        
+        if custom_config_path != None:
+            return custom_config_path
+
         phpunit_config_path = file_name
         found = False
         while found == False:
